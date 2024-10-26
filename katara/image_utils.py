@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 from functools import wraps
 import cv2
 import numpy as np
+from skimage import io
 
 
 def read_image(img, img_size):
@@ -30,33 +31,20 @@ def latency(func):
 
 
 def image_loader(img):
-    if isinstance(img, np.ndarray):
+    if isinstance(np.ndarray, img):
         return pillow.fromarray(img)
 
-    elif isinstance(img, str):
+    elif isinstance(str, img):
         return pillow.open(img)
 
-    elif isinstance(img, pillow):
+    elif isinstance(pillow, img):
         return img
 
+    elif isinstance(str, img):
+        img = io.imread(img)
+        img = pillow.fromarray(img)
 
-def image_grid(images):
-    # check if image  count matches grid arrangement
-    try:
-        image_len = len(images["image"])
-        assert image_len % 2 == 0, "Choose an even number to enable grid-show"
-
-        f, ax = plt.subplots(2, 2)
-        for index in range(image_len):
-            k, v = index // 2, index % 2
-            # ax[k, v].set_title(images["image"][index].filename)
-            ax[k, v].imshow(images["image"][index])
-            ax[k, v].axis("off")
-
-        plt.show()
-
-    except Exception as e:
-        print(f"Error in grid display ==> {e}")
+        return img
 
 
 def get_all_images(root_dir, extensions=("*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp")):
