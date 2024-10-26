@@ -1,14 +1,24 @@
 [project]
 name = "katara"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.0.1"
+description = "custom dev/research toolkit by tensorkelechi"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 dependencies = [
     "librosa",
-    "cv",
+    "opencv-python",
     "numpy",
-
+    "torch",
+    "datasets",
+    "pillow",
+    "soundfile",
+    "torchsummary",
+    "transformers",
+    "diffusers",
+    "wandb",
+    "scikit-image"
+    "tqdm",
+    "safetensors",
 ]
 
 [tool.uv]
@@ -37,5 +47,3 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["katara"]
-
-[project.scripts]

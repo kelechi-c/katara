@@ -1,4 +1,4 @@
 ### katara
-**personal library for my custom preprocessing/dev scripts/functions**
 
+**my custom research/development toolkit**
 ...
