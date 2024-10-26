@@ -2,7 +2,6 @@ import glob
 import os
 import time
 from PIL import Image as pillow
-from matplotlib import pyplot as plt
 from functools import wraps
 import cv2
 import numpy as np
