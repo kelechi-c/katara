@@ -16,7 +16,7 @@ dependencies = [
     "transformers",
     "diffusers",
     "wandb",
-    "scikit-image"
+    "scikit-image",
     "tqdm",
     "safetensors"
 ]
