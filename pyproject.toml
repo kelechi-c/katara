@@ -18,13 +18,12 @@ dependencies = [
     "wandb",
     "scikit-image"
     "tqdm",
-    "safetensors",
+    "safetensors"
 ]
+
 
 [tool.uv]
 constraint-dependencies = ["llvm>0.43.0"]
-
-keywords = []
 
 [project.urls]
 Homepage = "https://pypi.org/project/katara/"
