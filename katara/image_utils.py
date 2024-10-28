@@ -6,6 +6,7 @@ from functools import wraps
 import cv2
 import numpy as np
 from skimage import io
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 def read_image(img, img_size):
@@ -53,3 +54,31 @@ def get_all_images(root_dir, extensions=("*.jpg", "*.jpeg", "*.png", "*.gif", "*
             image_files.extend(glob.glob(os.path.join(directory, ext)))
     print(f"found {len(image_files)} images in {root_dir}")
     return image_files
+
+def load_moondream_models():
+    moondream_model = AutoModelForCausalLM.from_pretrained(
+        "vikhyatk/moondream2", trust_remote_code=True
+    )
+
+    md_tokenizer = AutoTokenizer.from_pretrained(
+        "vikhyatk/moondream2", trust_remote_code=True
+    )
+    
+    return moondream_model, md_tokenizer
+
+
+def caption_image_moondream(
+    image: pillow,
+) -> str:
+
+    model, tokenizer = load_moondream_models()
+    
+    enc_image = model.encode_image(
+        image
+    )  # encode image with vision encoder(moondream uses SigLip)
+
+    img_caption = model.answer_question(
+        enc_image, "Describe this image and it's style", tokenizer
+    )  # generate caption
+
+    return img_caption

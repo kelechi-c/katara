@@ -2,9 +2,22 @@ from typing import Union, List, Tuple
 import numpy as np
 import soundfile as sf
 import librosa
-import os
+import os, time
+import moonshine
 from pathlib import Path
 from tqdm.auto import tqdm
+
+
+def moonshine_transcriber(processed_audio, model_name="moonshine/tiny"):
+    stime = time.time()
+
+    # transcribe with moonshine
+    text_extract = moonshine.transcribe(processed_audio, model_name)
+
+    time_taken = time.time() - stime
+    print(f"transcribed in {time_taken:.2f}s")
+
+    return text_extract[0]
 
 
 def audiofile_crawler(
@@ -41,7 +54,7 @@ def read_audio(audio_file: Union[str, os.PathLike], sample_rate=22400) -> np.nda
 # trimming audio to a fixed length for all tasks
 
 
-def trimpad_audio(audio: np.ndarray, max_duration: int) -> np.ndarray:
+def trimpad_audio(audio: np.ndarray, max_duration: int, sample_rate=22400) -> np.ndarray:
     # calculate total number of samples
     samples = int(sample_rate * max_duration)
 

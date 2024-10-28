@@ -1,6 +1,6 @@
 [project]
 name = "katara"
-version = "0.0.1"
+version = "0.0.2"
 description = "custom dev/research toolkit by tensorkelechi"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -20,10 +20,6 @@ dependencies = [
     "tqdm",
     "safetensors"
 ]
-
-
-[tool.uv]
-constraint-dependencies = ["llvm>0.43.0"]
 
 [project.urls]
 Homepage = "https://pypi.org/project/katara/"
