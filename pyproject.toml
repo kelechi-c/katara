@@ -1,6 +1,6 @@
 [project]
 name = "katara"
-version = "0.0.2"
+version = "0.0.3"
 description = "custom dev/research toolkit by tensorkelechi"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -18,7 +18,8 @@ dependencies = [
     "wandb",
     "scikit-image",
     "tqdm",
-    "safetensors"
+    "safetensors",
+    "useful-moonshine"
 ]
 
 [project.urls]
